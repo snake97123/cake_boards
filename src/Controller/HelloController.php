@@ -11,6 +11,6 @@ class HelloController extends AppController
   }
 
   public function other(){
-    echo "これはindex以外のページになります。"
+    echo "これはindex以外のページになります。";
   }
 }
