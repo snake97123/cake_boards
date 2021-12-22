@@ -15,12 +15,20 @@
 </head>
 
 <body>
-  <div>
-    <div id="header">** Header **</div>
+  <div id="container">
+    <div id="header">
+      <?= $this->element('Hello/header', ["msg" => "山下 航です"],
+      [
+        "cache" => "long_view",
+        "callbacks" => true  
+      ]); ?>
+    </div>
     <div id="content">
       <?= $this->fetch('content') ?>
     </div>
-    <div id="footer">** this is footer **</div>
+    <div id="footer">
+      <?=$this->element($footer) ?>
+    </div>
   </div>
   
 </body>

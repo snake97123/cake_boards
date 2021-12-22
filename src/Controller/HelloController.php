@@ -14,8 +14,11 @@ class HelloController extends AppController
 
   public function index()
   {
-    $this->viewBuilder()->autoLayout(true);
-    $this->render('/Hello/index');
+    // $this->set('msg', 'おはようございます');
+    $n = rand(1,2);
+    $this->set('footer','Hello/footer' . $n);
+    // $this->viewBuilder()->autoLayout(true);
+    // $this->render('/Hello/index');
   }
 
   public function other()
