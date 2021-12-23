@@ -10,6 +10,7 @@ class HelloController extends AppController
     // $this->autoRender = false;
     $this->viewBuilder()->autoLayout(true);
     $this->viewBuilder()->Layout('Hello');
+    $this->set('footer', 'Hello/footer1');
   }
 
   public function index()
@@ -25,5 +26,17 @@ class HelloController extends AppController
   {
     $this->viewBuilder()->autoLayout(false);
     $this->autoRender = true;
+  }
+
+  public function sendForm()
+  {
+    $str = $this->request['url'];
+    $result = "";
+    if($str != ""){
+      $result = "you type: " . $str;
+    } else {
+      $result = "empty.";
+    }
+    $this->set("result", $result);
   }
 }
