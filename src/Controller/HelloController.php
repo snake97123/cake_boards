@@ -30,13 +30,13 @@ class HelloController extends AppController
 
   public function sendForm()
   {
-    $str = $this->request['url'];
+    $str = $this->request['url']['text1'];
     $result = "";
     if($str != ""){
       $result = "you type: " . $str;
     } else {
       $result = "empty.";
     }
-    $this->set("result", $result);
+    $this->set("result", h($result));
   }
 }
