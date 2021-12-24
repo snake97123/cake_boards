@@ -16,10 +16,21 @@ class HelloController extends AppController
   public function index()
   {
     // $this->set('msg', 'おはようございます');
-    $n = rand(1,2);
-    $this->set('footer','Hello/footer' . $n);
+    // $n = rand(1,2);
+    // $this->set('footer','Hello/footer' . $n);
     // $this->viewBuilder()->autoLayout(true);
     // $this->render('/Hello/index');
+    $result = "";
+    if($this->request->isPost()){
+      $result = "<pre>送信された情報<br/>";
+      foreach($this->request->data['HelloForm'] as $key => $val){
+        $result .= $key . '=>' . $val;
+      }
+      $result .="</pre>";
+    } else {
+      $result = "なにか送信してください";
+    }
+    $this->set("result", $result);
   }
 
   public function other()
