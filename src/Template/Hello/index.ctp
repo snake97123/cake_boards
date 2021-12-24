@@ -1,4 +1,4 @@
-<h1>サンプルの見出し</h1>
+<!-- <h1>サンプルの見出し</h1>
 <p>こんにちはこれはCakePHPの練習です</p>
 <form method="get" action="/hello/sendForm">
   <input type="hidden" name="check1" value="off">
@@ -15,4 +15,12 @@
     <option value="MacOSX">MacOSX</option>
   </select>
   <input type="submit">
+</form> -->
+
+<h1>サンプル</h1>
+<p>フォームの送信</p>
+<form method="post" action="/hello/sendForm">
+<input type="hidden" name="_csrfToken" value="<?= $this->request->getParam('_csrfToken') ?>">
+  <input type="text" name="text1" />
+  <input type="submit" />
 </form>
