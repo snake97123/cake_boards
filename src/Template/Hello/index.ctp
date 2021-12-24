@@ -1,6 +1,8 @@
 <h1>サンプルの見出し</h1>
 <p>こんにちはこれはCakePHPの練習です</p>
 <form method="get" action="/hello/sendForm">
+  <input type="hidden" name="check1" value="off">
+  <input type="hidden" name="radio1" value="off">
   <input type="checkbox" name="check1" id="c1" />
     <label for="c1">チェック</label><br />
   <input type="radio" name="radio1" id="r1" value="No.1" />
