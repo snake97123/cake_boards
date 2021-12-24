@@ -30,7 +30,7 @@
   <?=$this->Form->submit("送信") ?>
 <?=$this->Form->end(); ?> -->
 
-<?= $this->Form->create(null,
+<!-- <?= $this->Form->create(null,
     ['type' => 'post', 'url' => ['action' => 'index']]) ?>
   <?=$this->Form->radio("HelloForm.radio1",
   [
@@ -41,4 +41,12 @@
   ['label'=>true, 'value'=>'Linux']) ?>
   <?=$this->Form->submit('送信') ?>
 <?=$this->Form->end(); ?>
- 
+  -->
+
+<?=$this->Form->create(null,
+    ['type' =>'post', 'url' => ['action' => 'index']]) ?>
+  <?php echo $this->Form->select('HelloForm.select1',
+      array('ウインドウズ'=>'Windows', 'リナックス'=>'Linux', 'マックOS'=>'MacOS'),
+      array('empty' => '項目を選んでください')); ?>
+  <?=$this->Form->submit('送信')?>
+<?=$this->Form->end();?>
