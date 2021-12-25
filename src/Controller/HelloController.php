@@ -22,15 +22,12 @@ class HelloController extends AppController
     // $this->render('/Hello/index');
     $result = "";
     if($this->request->isPost()){
-      $result = "<pre>送信された情報<br/>";
-      foreach($this->request->data['HelloForm'] as $key => $val){
-        $v_str = '';
-        foreach($val as $v){
-          $v_str .= $v . ' ';
-        }
-        $result .= $key . '=>' . $v_str;
-      }
-      $result .="</pre>";
+      // $result = "<pre>送信された情報<br/>";
+     $result = $this->request->data['HelloForm']['date'];
+        // $v_str = '';
+        // foreach($val as $v)
+        //   $v_str .= $v . ' ';
+        
     } else {
       $result = "なにか送信してください";
     }

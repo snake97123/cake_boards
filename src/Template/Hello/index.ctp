@@ -20,7 +20,7 @@
 <!-- チェックボタンの生成 -->
  <h1>サンプル見出し</h1>
 <p>
-  <?=$result; ?>
+  <?php print_r($result) ?>
 </p>
 <!-- <?=$this->Form->create(null,
     ['type'=>'post', 'url' => ['action'=>'index']]) ?>
@@ -51,7 +51,7 @@
   <?=$this->Form->submit('送信')?>
 <?=$this->Form->end();?> -->
 
-<?=$this->Form->create(null,
+<!-- <?=$this->Form->create(null,
     ['type' => 'post', ['action' => 'index']]) ?>
   <?= $this->Form->select('HelloForm.select1',
   [
@@ -70,4 +70,11 @@
       'size' => 10, 'empty'=>'項目を選んでください', 'multiple'=>true
     ]) ?>
     <?=$this->Form->submit('送信') ?>
-  <?=$this->Form->end(); ?>
+  <?=$this->Form->end(); ?> -->
+
+  <?php echo $this->Form->create(null,
+    ['type' => 'post', 'url'=>['action'=>'index']]);
+    echo $this->Form->dateTime('HelloForm.date');
+    echo $this->Form->submit('送信');
+    echo $this->Form->end();
+    ?>
