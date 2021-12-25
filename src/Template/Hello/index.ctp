@@ -43,10 +43,31 @@
 <?=$this->Form->end(); ?>
   -->
 
-<?=$this->Form->create(null,
+<!-- <?=$this->Form->create(null,
     ['type' =>'post', 'url' => ['action' => 'index']]) ?>
   <?php echo $this->Form->select('HelloForm.select1',
-      array('ウインドウズ'=>'Windows', 'リナックス'=>'Linux', 'マックOS'=>'MacOS'),
-      array('empty' => '項目を選んでください')); ?>
+      ['ウインドウズ'=>'Windows', 'リナックス'=>'Linux', 'マックOS'=>'MacOS'],
+      ['empty' => '項目を選んでください', 'multiple' =>true, 'size'=> 5, 'value'=>['Windows', 'Linux']]); ?>
   <?=$this->Form->submit('送信')?>
-<?=$this->Form->end();?>
+<?=$this->Form->end();?> -->
+
+<?=$this->Form->create(null,
+    ['type' => 'post', ['action' => 'index']]) ?>
+  <?= $this->Form->select('HelloForm.select1',
+  [
+    'PC' => [
+      'ウインドウズ' => 'Windows',
+      'リナックス'=> 'Linux',
+      'マックOS'=>'macOS'
+    ],
+    'mobile'=>[
+      'アンドロイド' => 'Android',
+      'アイフォン' => 'iPHone',
+      'ガラケー' => 'cellphone'
+    ]
+    ],
+    [
+      'size' => 10, 'empty'=>'項目を選んでください', 'multiple'=>true
+    ]) ?>
+    <?=$this->Form->submit('送信') ?>
+  <?=$this->Form->end(); ?>
