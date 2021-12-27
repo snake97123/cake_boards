@@ -18,10 +18,7 @@
 </form> -->
 
 <!-- チェックボタンの生成 -->
- <h1>サンプル見出し</h1>
-<p>
-  <?php print_r($result) ?>
-</p>
+
 <!-- <?=$this->Form->create(null,
     ['type'=>'post', 'url' => ['action'=>'index']]) ?>
   <?=$this->Form->checkbox("HelloForm.check1",
@@ -72,9 +69,10 @@
     <?=$this->Form->submit('送信') ?>
   <?=$this->Form->end(); ?> -->
 
-  <?php echo $this->Form->create(null,
+  <!-- <?php echo $this->Form->create(null,
     ['type' => 'post', 'url'=>['action'=>'index']]);
     echo $this->Form->dateTime('HelloForm.date');
     echo $this->Form->submit('送信');
     echo $this->Form->end();
-    ?>
+    ?> -->
+
