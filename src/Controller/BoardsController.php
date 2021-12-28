@@ -15,4 +15,17 @@ class BoardsController extends AppController {
     }
     return $this->redirect(['action' => 'index']);
   }
+
+  public function research(){
+    $this->set('entity',$this->Boards->newEntity());
+    if ($this->request->is('post')) {
+      $data = $this->Boards->find('all', [
+        'conditions' => ['id' => $this->request->data['id']]
+      ]);
+    } else {
+      $data = $this->Boards->find('all');
+    }
+    $this->set('data',$data);
+    // return $this->redirect(['action' => 'index']);
+  }
 }

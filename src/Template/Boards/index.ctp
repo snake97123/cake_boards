@@ -1,9 +1,10 @@
 <h1>Databaseサンプル</h1>
-<?=$this->Form->create($entity, ['url'=>['action'=>'addRecord']]) ?>
+<?=$this->Form->create($entity, ['url'=>['action'=>'research']]) ?>
 <fieldset>
-  <?=$this->Form->text("name") ?>
+  <!-- <?=$this->Form->text("name") ?>
   <?=$this->Form->text("title") ?>
-  <?=$this->Form->textarea("content") ?>
+  <?=$this->Form->textarea("content") ?> -->
+  <?=$this->Form->text("id") ?>
 </fieldset>
 
 <?=$this->Form->button("送信") ?>
