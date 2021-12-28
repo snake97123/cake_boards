@@ -22,9 +22,13 @@ class BoardsController extends AppController {
       $data = $this->Boards->find('all', [
         'conditions' => ['id' => $this->request->data['id']]
       ]);
-    } else {
-      $data = $this->Boards->find('all');
+      if($data->isEmpty()){
+        $data = $this->Boards->find('all');
+      }
     }
+      
+      
+      // $data = $this->Boards->find('all');
     $this->set('data',$data);
     // return $this->redirect(['action' => 'index']);
   }
