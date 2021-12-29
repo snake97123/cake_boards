@@ -4,7 +4,11 @@ namespace App\Controller;
 class BoardsController extends AppController {
   public function index(){
     $data = $this->Boards->find('all');
-    $this->set('data', $data);
+    $this->set('data',$data->toArray());
+    $this->set('count', $data->count());
+    $this->set('min', $data->min('id'));
+    $this->set('max', $data->max('id'));
+    $this->set('first', $data->first()->toArray());
     $this->set('entity', $this->Boards->newEntity());
   }
 
@@ -30,6 +34,10 @@ class BoardsController extends AppController {
       
       // $data = $this->Boards->find('all');
     $this->set('data',$data);
+    // $this->set('count', $data->count());
+    // $this->set('min', $data->min('id'));
+    // $this->set('max', $data->max('id'));
+    // $this->set('first', $data->first()->toArray());
     // return $this->redirect(['action' => 'index']);
   }
 }
