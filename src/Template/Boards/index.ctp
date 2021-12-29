@@ -1,7 +1,7 @@
 <h1>Databaseサンプル</h1>
 <?=$this->Form->create($entity, ['url'=>['action'=>'research']]) ?>
 <fieldset>
-  <?=$this->Form->text("name") ?>
+  <?=$this->Form->text("id") ?>
   <!-- <?=$this->Form->text("title") ?>
   <?=$this->Form->textarea("content") ?>
   <?=$this->Form->text("id") ?> -->

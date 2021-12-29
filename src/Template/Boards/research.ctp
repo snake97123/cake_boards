@@ -6,10 +6,10 @@
     <th>CONTENT</th>
   </tr>
 <?php 
-$arr = $data->toArray();
-for($i = 0;$i < count($arr); $i++){
+// $arr = $data->toArray();
+for($i = 0;$i < count($data); $i++){
   echo $this->Html->tableCells(
-    $arr[$i]->toArray(),
+    $data[$i]->toArray(),
     ['style'=>'background-color:#f0f0f0'],
     ['style'=>'font-weight:bold'],
     true);
