@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller;
 
+use \Exception;
+use Cake\Log\Log;
+
 class BoardsController extends AppController {
   public function index(){
     // $data = $this->Boards->find('all');
@@ -58,5 +61,20 @@ class BoardsController extends AppController {
     // $this->set('max', $data->max('id'));
     // $this->set('first', $data->first()->toArray());
     // return $this->redirect(['action' => 'index']);
+  }
+
+  public function delRecord(){
+     if ($this->request->is('post')) {
+      //  try {
+         $this->Boards->deleteAll(
+           ['id'=>$this->request->data['id']]
+         );
+        //  $entity = $this->Boards->get($this->request->data['id']);
+        //  $this->Boards->delete($entity);
+      //  } catch(Exception $e){
+      //    Log::write('debug', $e->getMessage());
+      //  }
+     }  
+     $this->redirect(['action' => 'index']);
   }
 }

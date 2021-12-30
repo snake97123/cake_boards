@@ -1,5 +1,5 @@
 <h1>Databaseサンプル</h1>
-<?=$this->Form->create($entity, ['url'=>['action'=>'research']]) ?>
+<?=$this->Form->create($entity, ['url'=>['action'=>'delRecord']]) ?>
 <fieldset>
   <?=$this->Form->text("id") ?>
   <!-- <?=$this->Form->text("title") ?>
