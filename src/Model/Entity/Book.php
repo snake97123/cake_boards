@@ -26,5 +26,6 @@ class Book extends Entity
         'title' => true,
         'author' => true,
         'price' => true,
+        'id' => false,
     ];
 }
