@@ -1,10 +1,11 @@
 <h1>Databaseサンプル</h1>
-<?=$this->Form->create($entity, ['url'=>['action'=>'delRecord']]) ?>
+<?=$this->Form->create($entity, ['url'=>['action'=>'editRecord']]) ?>
 <fieldset>
-  <?=$this->Form->text("id") ?>
-  <!-- <?=$this->Form->text("title") ?>
+  <p><?='ID = ' . $entity->id ?></p>
+  <?=$this->Form->hidden("id") ?>
+  <!-- <?=$this->Form->text("name") ?>
+  <?=$this->Form->text("title") ?> -->
   <?=$this->Form->textarea("content") ?>
-  <?=$this->Form->text("id") ?> -->
 </fieldset>
 
 <?=$this->Form->button("送信") ?>
