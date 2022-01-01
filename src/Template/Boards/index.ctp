@@ -11,7 +11,7 @@
   <?php foreach ($data as $obj): ?>
   <tr>
     <td>
-      <?=$obj ?>
+      <?php print_r($obj); ?>
     </td>
   </tr>
   <?php endforeach; ?>

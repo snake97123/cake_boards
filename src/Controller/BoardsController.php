@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use \Exception;
 use Cake\Log\Log;
+use Cake\Datasource\ConnectionManager;
 
 class BoardsController extends AppController {
   public function index($id = null){
@@ -15,12 +16,19 @@ class BoardsController extends AppController {
     //     Logg::write('debug', $e->getMessage());
     //   }
     // $data = $this->Boards->find('list')->toArray();
-   $data = $this->Boards->find();
-   if ($this->request->is('post')){
+  //  $data = $this->Boards->find();
+   if (!$this->request->is('post')){
+     $connection = ConnectionManager::get('default');
+     $data = $connection
+        ->execute('SELECT * FROM boards')
+        ->fetchAll('assoc');
+   } else {
      $input = $this->request->data['input'];
-     $data = $this->Boards->find()->where(function ($exp, $q) use($input){
-       return $exp->eq('id',$input);
-     });
+     $connection = ConnectionManager::get('default');
+     $data = $connection
+        ->execute('SELECT * FROM boards where id = :id',
+        ['id' => $input])
+        ->fetchAll('assoc');
    }
    $this->set('data', $data);
    $this->set('entity', $this->Boards->newEntity());
