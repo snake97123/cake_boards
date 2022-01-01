@@ -15,8 +15,9 @@ class BoardsController extends AppController {
     //     Logg::write('debug', $e->getMessage());
     //   }
     // $data = $this->Boards->find('list')->toArray();
-    $data = $this->Boards->find('all')->toArray();
-    $this->set('data', $data);
+   $data = $this->Boards->find('all');
+   $this->set('data', $data->toArray());
+   $this->set('qdata', $this->Boards->qdata);
     // $this->set('data', $data->toArray());
     // $this->set('count', $data->count());
     // }
