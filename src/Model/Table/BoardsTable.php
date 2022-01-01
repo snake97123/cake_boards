@@ -6,8 +6,7 @@ use Cake\Event\Event;
 use Cake\ORM\Query;
 
 class BoardsTable extends Table {
-  public $qdata = null;
   public function beforeFind(Event $event, Query $query){
-    $qdata = sql($query);
+    $query->order(['name' => 'ASC']);
   }
 }
