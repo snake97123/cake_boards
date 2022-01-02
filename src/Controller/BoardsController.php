@@ -7,6 +7,9 @@ use Cake\Datasource\ConnectionManager;
 
 class BoardsController extends AppController {
   public function index($id = null){
+    $data = $this->Boards->find('all');
+    $this->set('data', $data);
+    $this->set('entity', $this->Boards->newEntity());
     // $this->set('entity', $this->Boards->newEntity());
     // if($id != null){
     //   try{
@@ -17,21 +20,21 @@ class BoardsController extends AppController {
     //   }
     // $data = $this->Boards->find('list')->toArray();
   //  $data = $this->Boards->find();
-   if (!$this->request->is('post')){
-     $connection = ConnectionManager::get('default');
-     $data = $connection
-        ->execute('SELECT * FROM boards')
-        ->fetchAll('assoc');
-   } else {
-     $input = $this->request->data['input'];
-     $connection = ConnectionManager::get('default');
-     $data = $connection
-        ->execute('SELECT * FROM boards where id = :id',
-        ['id' => $input])
-        ->fetchAll('assoc');
-   }
-   $this->set('data', $data);
-   $this->set('entity', $this->Boards->newEntity());
+  //  if (!$this->request->is('post')){
+  //    $connection = ConnectionManager::get('default');
+  //    $data = $connection
+  //       ->execute('SELECT * FROM boards')
+  //       ->fetchAll('assoc');
+  //  } else {
+  //    $input = $this->request->data['input'];
+  //    $connection = ConnectionManager::get('default');
+  //    $data = $connection
+  //       ->execute('SELECT * FROM boards where id = :id',
+  //       ['id' => $input])
+  //       ->fetchAll('assoc');
+  //  }
+  //  $this->set('data', $data);
+  //  $this->set('entity', $this->Boards->newEntity());
     // $this->set('data', $data->toArray());
     // $this->set('count', $data->count());
     // }
@@ -63,9 +66,11 @@ class BoardsController extends AppController {
   public function addRecord(){
     if($this->request->is('post')){
       $board = $this->Boards->newEntity($this->request->data);
-      $this->Boards->save($board);
+      if($this->Boards->save($board)){
+        return $this->redirect(['action' => 'index']);
+        }
     }
-    return $this->redirect(['action' => 'index']);
+    $this->set('entity', $board);
   }
 
   public function research(){
