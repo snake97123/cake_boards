@@ -31,4 +31,8 @@ class BoardsTable extends Table {
   //     return false;
   //   }
   // }
+  public function buildRules(RulesChecker $rules){
+    $rules->add($rules->isUnique(['name'], 'すでに登録済みです。'));
+    return $rules;
+  }
 }
