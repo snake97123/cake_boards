@@ -13,12 +13,30 @@ use Cake\Validation\Validator;
 class BoardsTable extends Table {
   public function validationDefault(Validator $validator){
     $validator->integer('id');
-    $validator->notEmpty('name')
-              ->minLength('name', 3, '3文字以上入力してください')
-              ->maxLength('name', 20, '20文字以下で入力してください');
-    $validator->notEmpty('title');
-    $validator->notEmpty('content');
+    $validator->notEmpty('name','必須項目です。');
+              // ->minLength('name', 3, '3文字以上入力してください')
+              // ->maxLength('name', 20, '20文字以下で入力してください');
+    $validator->notEmpty('title', '必須項目です。');
+    $validator->notEmpty('content', '必須項目です。');
+  //   $validator->add('content', 'custom',
+  // [
+  //   'rule' => ['custom', "/\A\d+\z/"],
+  //   'message' => '整数を入力してください.'
+  // ]);
+    $validator->add('name', 'maxRecords',
+    [
+      'rule' => ['maxRecords', 'name', 1],
+      'message' => __('最大数を超えています。'),
+      'provider' => 'table',
+    ]);
     return $validator;
+  }
+
+  public function maxRecords($data,$field,$num){
+    $n = $this->find()
+           ->where([$field=>$data])
+           ->count();
+           return $n < $num ? true : false;
   }
   // public function beforeFind(Event $event, Query $query){
   //   $query->order(['name' => 'ASC']);

@@ -9,7 +9,7 @@
   <div class="error"><?=$this->Form->error('title') ?></div>
   <?=$this->Form->input('title', ['type'=>'text']) ?>
   <div class="error"><?=$this->Form->error('content') ?></div>
-  <?=$this->Form->input("content") ?>
+  <?=$this->Form->text("content") ?>
 </fieldset>
 <?=$this->Form->button("送信") ?>
 <?=$this->Form->end() ?>
