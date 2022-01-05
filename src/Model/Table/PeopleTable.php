@@ -8,7 +8,7 @@ use Cake\Validation\Validator;
 
 class PeopleTable extends Table {
   public function initialize(array $config){
-    $this->hasMany('Boards');
+    // $this->hasMany('Boards');
   }
 
   public function validationDefault(Validator $validator){

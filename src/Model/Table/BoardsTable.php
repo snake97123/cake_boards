@@ -11,6 +11,9 @@ use Cake\Event\EventInterface;
 use Cake\Validation\Validator;
 
 class BoardsTable extends Table {
+  public function initialize(array $config){
+    $this->belongsTo('People');
+  }
   public function validationDefault(Validator $validator){
     $validator->integer('id');
     $validator->notEmpty('name','必須項目です。');

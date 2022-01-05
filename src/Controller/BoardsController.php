@@ -8,7 +8,7 @@ use Cake\Validation\Validator;
 
 class BoardsController extends AppController {
   public function index($id = null){
-    $data = $this->Boards->find('all');
+    $data = $this->Boards->find('all')->contain(['People']);
     $this->set('data', $data);
     $this->set('entity', $this->Boards->newEntity());
     // $this->set('entity', $this->Boards->newEntity());
