@@ -1,22 +1,24 @@
-<style>
-  .error { color:red; font-size:smaller; font-weight:bold;}
-</style>
-<h1>Databaseサンプル</h1>
-<?=$this->Form->create($entity, ['url'=>['action'=>'addRecord']]) ?>
-<fieldset>
-  <div class="error"><?=$this->Form->error('name') ?></div>
-  <?=$this->Form->input('name', ['type'=>'text']) ?>
-  <div class="error"><?=$this->Form->error('title') ?></div>
-  <?=$this->Form->input('title', ['type'=>'text']) ?>
-  <div class="error"><?=$this->Form->error('content') ?></div>
-  <?=$this->Form->input("content") ?>
-  
-</fieldset>
-<?=$this->Form->button("送信") ?>
-<?=$this->Form->end() ?>
-
-<table>
-  <?php foreach ($data as $obj): ?>
-    <pre><?php print_r($obj->toArray()) ?></pre>
-  <?php endforeach; ?>
-</table>
+<h1>Boardsサンプル</h1>
+<p><?=$this->Html->link(
+  '※投稿する',
+  ['action' => 'add']
+) ?></p>
+<div>
+  <table>
+    <tr>
+      <th width="25%">投稿者</th><th>タイトル</th>
+    </tr>
+    <?php foreach ($data as $obj): ?>
+      <tr>
+        <td><?=$this->Html->link(
+          $obj['person']['name'],
+          ['action' => 'show2', $obj['person_id']]
+        ) ?></td>
+        <td><?=$this->Html->link(
+          $obj['title'],
+          ['action' => 'show',$obj['id']]
+        ) ?></td>
+      </tr>
+      <?php endforeach;?>
+  </table>
+</div>

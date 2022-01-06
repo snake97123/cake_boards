@@ -5,10 +5,16 @@ use \Exception;
 use Cake\Log\Log;
 use Cake\Datasource\ConnectionManager;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
 
 class BoardsController extends AppController {
-  public function index($id = null){
-    $data = $this->Boards->find('all')->contain(['People']);
+  private $people;
+  public function initialize(){
+    parent::initialize();
+    $this->people = TableRegistry::get('People');
+  }
+  public function index(){
+    $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
     $this->set('data', $data);
     $this->set('entity', $this->Boards->newEntity());
     // $this->set('entity', $this->Boards->newEntity());
