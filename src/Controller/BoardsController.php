@@ -142,4 +142,26 @@ class BoardsController extends AppController {
     }
     return $this->redirect(['action' => 'index']);
   }
+
+  public function add(){
+    if ($this->request->isPost()){
+      if (!$this->people->checkNameAndPass($this->request->data)){
+        $this->Flash->error('名前かパスワードを確認ください。');
+      } else {
+        $res = $this->people->find()
+           ->where(['name' => $this->request->data['name']])
+           ->andWhere(['password' => $this->request->data['password']])
+           ->first();
+           $board = $this->Boards->newEntity();
+          //  $board->name = $this->request->data['name'];
+           $board->title = $this->request->data['title'];
+           $board->content = $this->request->data['content'];
+           $board->person_id = $res['id'];
+           if($this->Boards->save($board)){
+             $this->redirect(['action' => 'index']);
+           }
+      }
+    }
+    $this->set('entity', $this->Boards->newEntity());
+  }
 }
