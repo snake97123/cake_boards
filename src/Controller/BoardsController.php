@@ -164,4 +164,18 @@ class BoardsController extends AppController {
     }
     $this->set('entity', $this->Boards->newEntity());
   }
+
+  public function show($param = 0){
+    $data = $this->Boards
+        ->find()
+        ->where(['Boards.id'=>$param])
+        ->contain(['People'])
+        ->first();
+        $this->set('data', $data);
+  }
+
+  public function show2($param = 0){
+    $data = $this->people->get($param);
+    $this->set('data', $data);
+  }
 }
