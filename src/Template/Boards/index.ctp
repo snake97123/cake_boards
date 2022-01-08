@@ -48,3 +48,16 @@
   ['style'=>'color: #006600']
 ); ?>
 </span>
+<p>
+  <?php
+    $this->Html->addCrumb('First', 'one');
+    $this->Html->addCrumb('Second', 'two');
+    $this->Html->addCrumb('Last', 'end');
+  ?>
+  <?=$this->Html->getCrumbs(' | ','TOP') ?>
+</p>
+
+<?=$this->Html->tag('span',
+    h('これはHTMLヘルパーによる<span>タグの出力です。'),
+    ['style'=>'color: #006600; font-weight: bold'],
+    true) ?>
