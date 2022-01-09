@@ -1,12 +1,12 @@
-<h1>Boardsサンプル</h1>
-<p><?=$this->Html->link(
-  '※投稿する',
-  ['action' => 'add']
-) ?></p>
+<p><?=__('{0} post',$count) ?></p>
+<h1><?=__('Boards') ?></h1>
+<p>
+  <a href="/boards/add"><?=__('post') ?></a>
+</p>
 <div>
-  <!-- <table>
+  <table>
     <tr>
-      <th width="25%">投稿者</th><th>タイトル</th>
+      <th width="25%"><?=__('user') ?></th><th><?=__('title') ?></th>
     </tr>
     <?php foreach ($data as $obj): ?>
       <tr>
@@ -20,8 +20,8 @@
         ) ?></td>
       </tr>
       <?php endforeach;?>
-  </table> -->
-  <table>
+  </table>
+  <!-- <table>
     <?=$this->Html->tableHeaders(
       ['投稿者', 'タイトル'],
       ['style'=>'color:#000066; background-color: #AAAAFF'],
@@ -34,9 +34,9 @@
       ['style' => 'color:#006600; background-color: #EEFFEE'],
       false, true) ?>
       <?php endforeach; ?>
-  </table>
+  </table> -->
 </div>
-<span style='font-size: 18pt; font-weight: 700;'>
+<!-- <span style='font-size: 18pt; font-weight: 700;'>
 <?=$this->Html->nestedList(
   ['階層化されたリスト' =>
       ['最初の項目',
@@ -60,4 +60,4 @@
 <?=$this->Html->tag('span',
     h('これはHTMLヘルパーによる<span>タグの出力です。'),
     ['style'=>'color: #006600; font-weight: bold'],
-    true) ?>
+    true) ?> -->

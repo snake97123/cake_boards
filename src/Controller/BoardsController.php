@@ -6,16 +6,19 @@ use Cake\Log\Log;
 use Cake\Datasource\ConnectionManager;
 use Cake\Validation\Validator;
 use Cake\ORM\TableRegistry;
+use Cake\I18n\I18n;
 
 class BoardsController extends AppController {
   private $people;
   public function initialize(){
     parent::initialize();
     $this->people = TableRegistry::get('People');
+    I18n::locale('ja_JP');
   }
   public function index(){
     $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
     $this->set('data', $data);
+    $this->set('count', $data->count());
     $this->set('entity', $this->Boards->newEntity());
     // $this->set('entity', $this->Boards->newEntity());
     // if($id != null){
