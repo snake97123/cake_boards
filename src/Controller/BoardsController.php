@@ -10,16 +10,24 @@ use Cake\I18n\I18n;
 
 class BoardsController extends AppController {
   private $people;
+  public $paginate = [
+    'limit' => 3,
+    'contain' => ['People']
+    ];
   public function initialize(){
     parent::initialize();
     $this->people = TableRegistry::get('People');
     I18n::locale('ja_JP');
+    $this->loadComponent('Paginator');
   }
   public function index(){
-    $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
+    // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
+    $data = $this->paginate($this->Boards);
     $this->set('data', $data);
     $this->set('count', $data->count());
     $this->set('entity', $this->Boards->newEntity());
+    
+
     // $this->set('entity', $this->Boards->newEntity());
     // if($id != null){
     //   try{
