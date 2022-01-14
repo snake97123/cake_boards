@@ -5,7 +5,25 @@
 </p>
 <div>
   <table>
-    <tr>
+  <tr>
+    <th><?=$this->Paginator->sort('id', '投稿順') ?></th>
+    <th><?=$this->Paginator->sort('Person.name', '名前') ?></th>
+    <th><?=$this->Paginator->sort('title','タイトル') ?></th>
+  </tr>
+
+  <?php foreach ($data as $obj): ?>
+    <?=$this->Html->tableCells(
+      [
+        $obj['id'],
+        $obj['person']['name'],
+        $obj['title']
+      ],
+      ['style' => 'color:#000066; background-color: #CCCCFF'],
+      ['style' => 'color:#006600; background-color: #EEFFEE'],
+      false, true
+    ) ?>
+    <?php endforeach ?>
+    <!-- <tr>
       <th width="25%"><?=__('user') ?></th><th><?=__('title') ?></th>
     </tr>
     <?php foreach ($data as $obj): ?>
@@ -19,7 +37,7 @@
           ['action' => 'show',$obj['id']]
         ) ?></td>
       </tr>
-      <?php endforeach;?>
+      <?php endforeach;?> -->
   </table>
   <div class="paginator">
     <ul class="pagination">
