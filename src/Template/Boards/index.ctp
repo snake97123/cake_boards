@@ -23,11 +23,14 @@
   </table>
   <div class="paginator">
     <ul class="pagination">
-        <?= $this->Paginator->first('<<') ?>
-        <?= $this->Paginator->prev('<') ?>
-        <?= $this->Paginator->numbers() ?>
-        <?= $this->Paginator->next('>') ?>
-        <?= $this->Paginator->last('>>') ?>
+       <?=$this->Paginator->numbers([
+         'before'=>$this->Paginator->hasPrev() ?
+            $this->Paginator->first('<<') . '・' : '',
+         'after'=>$this->Paginator->hasNext() ?
+         '・' . $this->Paginator->last('>>') : '',
+         'modulus' =>4,
+         'separator' =>'・'
+       ]) ?>
     </ul>
 </div>
   <!-- <table>

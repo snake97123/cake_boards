@@ -11,7 +11,10 @@ use Cake\I18n\I18n;
 class BoardsController extends AppController {
   private $people;
   public $paginate = [
-    'limit' => 3,
+    'limit' => 5,
+    'order'=> [
+      'id' => 'DESC'
+    ],
     'contain' => ['People']
     ];
   public function initialize(){
