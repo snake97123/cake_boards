@@ -37,5 +37,6 @@ class AppView extends View
     public function initialize()
     {
         $this->loadHelper('Paginator', ['templates' => 'my-paginator-temp']);
+        $this->loadHelper('Rss');
     }
 }

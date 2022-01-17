@@ -22,13 +22,21 @@ class BoardsController extends AppController {
     $this->people = TableRegistry::get('People');
     I18n::locale('ja_JP');
     $this->loadComponent('Paginator');
+    $this->loadComponent('RequestHandler');
   }
   public function index(){
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
-    $data = $this->paginate($this->Boards);
-    $this->set('data', $data);
-    $this->set('count', $data->count());
-    $this->set('entity', $this->Boards->newEntity());
+    if ($this->RequestHandler->isRss()){
+      $data = $this->Boards
+                   ->find()
+                   ->limit(10)
+                   ->order(['id' => 'DESC']);
+      $this->set(compact('data'));
+    } else {
+      $data = $this->paginate($this->Boards);
+      $this->set('data', $data);
+      $this->set('count', $data->count());
+    }
     
 
     // $this->set('entity', $this->Boards->newEntity());

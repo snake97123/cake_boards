@@ -23,7 +23,7 @@
       false, true
     ) ?>
     <?php endforeach ?>
-    <!-- <tr>
+    <tr>
       <th width="25%"><?=__('user') ?></th><th><?=__('title') ?></th>
     </tr>
     <?php foreach ($data as $obj): ?>
@@ -37,7 +37,7 @@
           ['action' => 'show',$obj['id']]
         ) ?></td>
       </tr>
-      <?php endforeach;?> -->
+      <?php endforeach;?>
   </table>
   <div class="paginator">
     <ul class="pagination">

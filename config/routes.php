@@ -44,6 +44,7 @@ use Cake\Routing\Route\DashedRoute;
  *
  */
 Router::defaultRouteClass(DashedRoute::class);
+Router::extensions('rss');
 
 Router::scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
@@ -89,7 +90,11 @@ Router::scope('/', function (RouteBuilder $routes) {
      * routes you want in your application.
      */
     $routes->fallbacks(DashedRoute::class);
+
+    // $routes->extensions(['rss']);
 });
+
+
 
 /*
  * If you need a different set of middleware or none at all,
