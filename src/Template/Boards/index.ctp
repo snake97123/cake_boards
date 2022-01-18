@@ -1,5 +1,6 @@
 <p><?=__('{0} post',$count) ?></p>
 <h1><?=__('Boards') ?></h1>
+
 <p>
   <a href="/boards/add"><?=__('post') ?></a>
 </p>
@@ -91,3 +92,4 @@
     h('これはHTMLヘルパーによる<span>タグの出力です。'),
     ['style'=>'color: #006600; font-weight: bold'],
     true) ?> -->
+

@@ -1,3 +1,23 @@
+<style type="text/css">
+    span.highlight {
+        color:white;
+        background:blue;
+        font-weight:bold;
+    }
+</style>
+<?php 
+   $content = "テキストの一部をハイライト表示します。";
+   $hstr = $this->Text->highlight(
+       $content,
+       "ハイライト表示",
+       [
+           'format' =>
+                '<span class="highlight">\1</span>',
+                'html' => true
+       ]
+       );
+       ?>
+       <?= $this->Html->para('p', $hstr) ?>
 <?php
 /**
  * @var \App\View\AppView $this
@@ -45,3 +65,4 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+

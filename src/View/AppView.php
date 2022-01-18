@@ -38,5 +38,6 @@ class AppView extends View
     {
         $this->loadHelper('Paginator', ['templates' => 'my-paginator-temp']);
         $this->loadHelper('Rss');
+        $this->loadHelper('Text');
     }
 }
