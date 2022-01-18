@@ -1,6 +1,30 @@
 <p><?=__('{0} post',$count) ?></p>
 <h1><?=__('Boards') ?></h1>
+<?php $t = time(); ?>
+<p><?=$this->Time->fromString($t) ?></p>
+<p><?=$this->Time->toUnix($t) ?></p>
+<p><?=$this->Time->gmt($t) ?></p>
 
+<?php $t = '2016-10-24 12:34:56'; ?>
+<p><?=$this->Time->format($t, 'yyyy年MM月dd日 HH時mm分ss秒') ?></p>
+<p><?=$this->Time->nice($t) ?></p>
+<p><?=$this->Time->toAtom($t) ?></p>
+<p><?=$this->Time->toRSS($t) ?></p>
+
+<pre>
+  <?php
+  $t = time();
+  print_r($this->Time->toQuarter($t, false))
+  ?>
+</pre>
+
+<p><?=$this->Time->timeAgoInWords(
+  '1999-12-24',
+  [
+    'format'=>'Y-m-d',
+    'end'=>'40 year'
+  ]
+) ?></p>
 <p>
   <a href="/boards/add"><?=__('post') ?></a>
 </p>
