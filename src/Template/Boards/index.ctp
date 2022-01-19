@@ -27,3 +27,5 @@
   <a href="/">
     <?php echo $this->RgbText->blueString('トップに戻る'); ?>
   </a>
+
+<?php echo $this->element('SampleBanner'); ?>
