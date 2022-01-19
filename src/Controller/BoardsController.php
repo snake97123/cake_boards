@@ -23,20 +23,12 @@ class BoardsController extends AppController {
     I18n::locale('ja_JP');
     $this->loadComponent('Paginator');
     $this->loadComponent('RequestHandler');
+
   }
   public function index(){
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
-    if ($this->RequestHandler->isRss()){
-      $data = $this->Boards
-                   ->find()
-                   ->limit(10)
-                   ->order(['id' => 'DESC']);
-      $this->set(compact('data'));
-    } else {
-      $data = $this->paginate($this->Boards);
-      $this->set('data', $data);
-      $this->set('count', $data->count());
-    }
+   $data = $this->paginate($this->Boards);
+   $this->set('data', $data);
     
 
     // $this->set('entity', $this->Boards->newEntity());
