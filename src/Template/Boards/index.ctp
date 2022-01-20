@@ -1,3 +1,4 @@
+
 <h1><?=$this->RgbText->redString('掲示板') ?></h1>
 <p><?=$this->RgbText->greenLink('投稿する', '/boards/add') ?></p>
 

@@ -26,6 +26,7 @@ class BoardsController extends AppController {
 
   }
   public function index(){
+    $this->Flash->info('クリックすると消えます。');
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
    $data = $this->paginate($this->Boards);
    $this->set('data', $data);

@@ -6,15 +6,17 @@ class HelloController extends AppController
 {
   public function initialize()
   {
+    parent::initialize();
     $this->name = 'Hello';
     // $this->autoRender = false;
-    $this->viewBuilder()->autoLayout(true);
-    $this->viewBuilder()->Layout('Hello');
+    // $this->viewBuilder()->autoLayout(true);
+    // $this->viewBuilder()->Layout('Hello');
     $this->set('footer', 'Hello/footer1');
   }
 
   public function index()
   {
+    $this->Flash->set('クリックすると消えます。');
     // $this->set('msg', 'おはようございます');
     // $n = rand(1,2);
     // $this->set('footer','Hello/footer' . $n);
@@ -36,6 +38,7 @@ class HelloController extends AppController
 
   public function other()
   {
+    
     $this->viewBuilder()->autoLayout(false);
     $this->autoRender = true;
   }

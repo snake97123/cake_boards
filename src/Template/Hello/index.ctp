@@ -1,3 +1,5 @@
+
+
 <!-- <h1>サンプルの見出し</h1>
 <p>こんにちはこれはCakePHPの練習です</p>
 <form method="get" action="/hello/sendForm">
