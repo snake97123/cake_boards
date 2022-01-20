@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use Cake\Controller\Controller;
+use Cake\Event\Event;
+
 class HelloController extends AppController
 {
   public function initialize()
@@ -12,28 +15,38 @@ class HelloController extends AppController
     // $this->viewBuilder()->autoLayout(true);
     // $this->viewBuilder()->Layout('Hello');
     $this->set('footer', 'Hello/footer1');
+    $this->loadComponent('Csrf');
   }
 
   public function index()
   {
-    $this->Flash->set('クリックすると消えます。');
+    if ($this->request->isPost()){
+      if (!empty($this->request->data['name']) && !empty($this->request->data['password'])){
+        $this->Flash->success('ok!');
+      } else {
+        $this->Flash->error('bad...');
+      }
+    } else {
+      $this->Flash->info('please input form:');
+    }
+    // $this->Flash->set('クリックすると消えます。');
     // $this->set('msg', 'おはようございます');
     // $n = rand(1,2);
     // $this->set('footer','Hello/footer' . $n);
     // $this->viewBuilder()->autoLayout(true);
     // $this->render('/Hello/index');
-    $result = "";
-    if($this->request->isPost()){
+    // $result = "";
+    // if($this->request->isPost()){
       // $result = "<pre>送信された情報<br/>";
-     $result = $this->request->data['HelloForm']['date'];
+    //  $result = $this->request->data['HelloForm']['date'];
         // $v_str = '';
         // foreach($val as $v)
         //   $v_str .= $v . ' ';
         
-    } else {
-      $result = "なにか送信してください";
-    }
-    $this->set("result", $result);
+    // } else {
+    //   $result = "なにか送信してください";
+    // }
+    // $this->set("result", $result);
   }
 
   public function other()
@@ -58,5 +71,9 @@ class HelloController extends AppController
       $result = "empty.";
     }
     $this->set("result", h($result));
+  }
+
+  public function beforeFilter(Event $event){
+    $this->eventManager()->off($this->Csrf);
   }
 }

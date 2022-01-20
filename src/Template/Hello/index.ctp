@@ -1,3 +1,14 @@
+<h1>サンプル見出し</h1>
+<p>これはサンプルです</p>
+
+<?=$this->Form->create(null,
+    ['type'=>'post', 'url' => ['action'=>'index']]) ?>
+    <!-- <fieldset> -->
+      <?=$this->Form->text("name") ?>
+      <?=$this->Form->password("password") ?>
+    <!-- </fieldset> -->
+    <?=$this->Form->submit("送信") ?>
+  <?=$this->Form->end() ?>
 
 
 <!-- <h1>サンプルの見出し</h1>
