@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Network\Exception\InvalidCsrfTokenException;
 
 class HelloController extends AppController
 {
@@ -16,20 +17,29 @@ class HelloController extends AppController
     // $this->viewBuilder()->Layout('Hello');
     $this->set('footer', 'Hello/footer1');
     $this->loadComponent('Csrf');
+    $this->loadComponent('Cookie');
+    $this->Cookie->config('path', '/');
+    $this->Cookie->config('domain', 'localhost');
+    $this->Cookie->config('expires', 0);
+    $this->Cookie->config('secure', false);
+    $this->Cookie->config('httpOnly', true);
+    $this->Cookie->config('encryption', false);
   }
 
   public function index()
   {
-    if ($this->request->isPost()){
-      if (!empty($this->request->data['name']) && !empty($this->request->data['password'])){
-        $this->Flash->success('ok!');
-      } else {
-        $this->Flash->error('bad...');
-      }
-    } else {
-      $this->Flash->info('please input form:');
-    }
-    // $this->Flash->set('クリックすると消えます。');
+    $data = $this->Cookie->read('mykey');
+    $this->set('data', $data);
+    // if ($this->request->isPost()){
+    //   if (!empty($this->request->data['name']) && !empty($this->request->data['password'])){
+    //     $this->Flash->success('ok!');
+    //   } else {
+    //     $this->Flash->error('bad...');
+    //   }
+    // } else {
+    //   $this->Flash->info('please input form:');
+    // }
+    // // $this->Flash->set('クリックすると消えます。');
     // $this->set('msg', 'おはようございます');
     // $n = rand(1,2);
     // $this->set('footer','Hello/footer' . $n);
@@ -75,5 +85,11 @@ class HelloController extends AppController
 
   public function beforeFilter(Event $event){
     $this->eventManager()->off($this->Csrf);
+  }
+
+  public function write(){
+    $val = $this->request->query['val'];
+    $this->Cookie->write('mykey', $val);
+    $this->redirect(['action' => 'index']);
   }
 }

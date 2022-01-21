@@ -1,15 +1,5 @@
-<h1>サンプル見出し</h1>
-<p>これはサンプルです</p>
-
-<?=$this->Form->create(null,
-    ['type'=>'post', 'url' => ['action'=>'index']]) ?>
-    <!-- <fieldset> -->
-      <?=$this->Form->text("name") ?>
-      <?=$this->Form->password("password") ?>
-    <!-- </fieldset> -->
-    <?=$this->Form->submit("送信") ?>
-  <?=$this->Form->end() ?>
-
+<h1>cookie sample</h1>
+<p>cookie: <?=$data ?></p>
 
 <!-- <h1>サンプルの見出し</h1>
 <p>こんにちはこれはCakePHPの練習です</p>
