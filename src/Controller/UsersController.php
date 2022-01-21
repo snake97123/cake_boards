@@ -119,4 +119,24 @@ class UsersController extends AppController
         $this->request->session()->destroy();
         return $this->redirect($this->Auth->logout());
     }
+
+    // public function beforeFilter(Event $event){
+    //     parent::beforeFilter($event);
+    //     $this->Auth->allow(['add', 'login']);
+    // }
+
+    public function isAuthorized($user = null){
+        $action = $this->request->params['action'];
+
+        if (in_array($action, ['index', 'view'])){
+            return true;
+        }
+        if ($user['role'] === 'admin'){
+            return true;
+        }
+        if ($user['role'] === 'user'){
+            return true;
+        }
+        return false;
+    }
 }
