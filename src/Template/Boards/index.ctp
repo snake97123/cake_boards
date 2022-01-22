@@ -1,33 +1,31 @@
+<h1>掲示板</h1>
+<p><?=$this->Html->link(
+  '投稿する',
+  ['action' => 'add']
+) ?></p>
 
-<h1><?=$this->RgbText->redString('掲示板') ?></h1>
-<p><?=$this->RgbText->greenLink('投稿する', '/boards/add') ?></p>
-
-  <div>
-    <table>
+<div>
+  <table>
+    <?php $flg = true; ?>
+    <?php foreach ($marged as $arr): ?>
+    <?php if ($flg){ ?>
       <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>title</th>
-        <th>content</th>
+        <?php foreach ($arr as $key=>$item): ?>
+          <th><?=$key ?></th>
+        <?php endforeach; ?>
+      </tr>
+      <?php $flg = false; } ?>
+      <tr>
+        <?php foreach ($arr as $item): ?>
+          <td><?=$item ?></td>
+          <?php endforeach; ?>
       </tr>
 
-      <?php foreach ($data as $arr): ?>
-      <?=$this->Html->tableCells(
-        [
-          $arr['id'],
-          $arr['person']['name'],
-          $arr['title']
-        ],
-        ['style'=>'color:#000066; background-color: #CCCCFF'],
-        ['style'=>'color:#006600: background-color: #EEFFEE'],
-        false, true
-      ) ?>
       <?php endforeach; ?>
-    </table>
-  </div>
+  </table>
+</div>
 
-  <a href="/">
-    <?php echo $this->RgbText->blueString('トップに戻る'); ?>
-  </a>
-
-<?php echo $this->element('SampleBanner'); ?>
+<p><?=$this->Html->link(
+  '一覧に戻る',
+  ['action' => 'index']
+) ?></p>

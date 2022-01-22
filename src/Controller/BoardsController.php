@@ -30,7 +30,7 @@ class BoardsController extends AppController {
     // $this->Flash->info('クリックすると消えます。');
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
    $data = $this->paginate($this->Boards);
-   $this->set('data', $this->DataArray->getMergedArray($data));
+   $this->set('data', $this->DataArray->getMergedArray('boards'));
     
 
     // $this->set('entity', $this->Boards->newEntity());
