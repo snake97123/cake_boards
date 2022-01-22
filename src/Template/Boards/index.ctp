@@ -8,14 +8,15 @@
         <th>id</th>
         <th>name</th>
         <th>title</th>
+        <th>content</th>
       </tr>
 
-      <?php foreach ($data as $obj): ?>
+      <?php foreach ($data as $arr): ?>
       <?=$this->Html->tableCells(
         [
-          $obj['id'],
-          $obj['person']['name'],
-          $obj['title']
+          $arr['id'],
+          $arr['person']['name'],
+          $arr['title']
         ],
         ['style'=>'color:#000066; background-color: #CCCCFF'],
         ['style'=>'color:#006600: background-color: #EEFFEE'],

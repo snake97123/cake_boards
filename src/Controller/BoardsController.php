@@ -23,13 +23,14 @@ class BoardsController extends AppController {
     I18n::locale('ja_JP');
     $this->loadComponent('Paginator');
     $this->loadComponent('RequestHandler');
-
+    $this->loadComponent('DataArray');
   }
+
   public function index(){
-    $this->Flash->info('クリックすると消えます。');
+    // $this->Flash->info('クリックすると消えます。');
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
    $data = $this->paginate($this->Boards);
-   $this->set('data', $data);
+   $this->set('data', $this->DataArray->getMergedArray($data));
     
 
     // $this->set('entity', $this->Boards->newEntity());
