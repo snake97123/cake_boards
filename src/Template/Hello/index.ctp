@@ -1,5 +1,4 @@
-<h1>cookie sample</h1>
-<p>cookie: <?=$data ?></p>
+<pre><?php print_r($data->toArray()) ?></pre>
 
 <!-- <h1>サンプルの見出し</h1>
 <p>こんにちはこれはCakePHPの練習です</p>

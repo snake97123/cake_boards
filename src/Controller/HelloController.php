@@ -5,12 +5,14 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Network\Exception\InvalidCsrfTokenException;
+use Cake\ORM\TableRegistry;
 
 class HelloController extends AppController
 {
   public function initialize()
   {
     parent::initialize();
+    $this->boards = TableRegistry::get('Boards');
     $this->name = 'Hello';
     // $this->autoRender = false;
     // $this->viewBuilder()->autoLayout(true);
@@ -28,7 +30,8 @@ class HelloController extends AppController
 
   public function index()
   {
-    $data = $this->Cookie->read('mykey');
+    $data = $this->boards->anyData();
+    // $data = $this->Cookie->read('mykey');
     $this->set('data', $data);
     // if ($this->request->isPost()){
     //   if (!empty($this->request->data['name']) && !empty($this->request->data['password'])){

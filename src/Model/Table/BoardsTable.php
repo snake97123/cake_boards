@@ -15,6 +15,8 @@ class BoardsTable extends Table {
   public function initialize(array $config){
     $this->belongsTo('People');
     $this->addBehavior('Translate', ['fields' => ['title']]);
+    $this->addBehavior('SuperTable');
+
   }
   public function validationDefault(Validator $validator){
     $validator->integer('id');
