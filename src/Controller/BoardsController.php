@@ -7,6 +7,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Validation\Validator;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\I18n;
+use Cake\Event\Event;
 
 class BoardsController extends AppController {
   private $people;
@@ -26,11 +27,17 @@ class BoardsController extends AppController {
     $this->loadComponent('DataArray');
   }
 
+  public function beforeFilter(Event $event){
+    parent::beforeFilter($event);
+    I18n::setLocale('ja');
+  }
+
   public function index(){
     // $this->Flash->info('クリックすると消えます。');
     // $data = $this->Boards->find('all')->order(['Boards.id' => 'DESC'])->contain(['People']);
    $data = $this->paginate($this->Boards);
-   $this->set('data', $this->DataArray->getMergedArray('boards'));
+   $this->set(compact('data'));
+  //  $this->set('data', $this->DataArray->getMergedArray('boards'));
     
 
     // $this->set('entity', $this->Boards->newEntity());

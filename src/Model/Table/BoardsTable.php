@@ -10,9 +10,11 @@ use Cake\Datasource\EntityInterface;
 use Cake\Event\EventInterface;
 use Cake\Validation\Validator;
 
+
 class BoardsTable extends Table {
   public function initialize(array $config){
     $this->belongsTo('People');
+    $this->addBehavior('Translate', ['fields' => ['title']]);
   }
   public function validationDefault(Validator $validator){
     $validator->integer('id');

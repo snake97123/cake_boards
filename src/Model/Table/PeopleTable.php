@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
 class PeopleTable extends Table {
   public function initialize(array $config){
     $this->hasMany('Boards');
+    $this->addBehavior('Translate', ['fields' => ['name']]);
   }
 
   public function validationDefault(Validator $validator){
