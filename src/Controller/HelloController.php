@@ -30,7 +30,7 @@ class HelloController extends AppController
 
   public function index()
   {
-    $data = $this->boards->anyData();
+    $data = $this->boards->find('something', ['field' => 'title', 'value'=>'%cake%']);
     // $data = $this->Cookie->read('mykey');
     $this->set('data', $data);
     // if ($this->request->isPost()){
