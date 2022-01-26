@@ -32,4 +32,9 @@ class MyCmdShell extends Shell {
     $this->Db->main();
     $this->Db->get($table, $id);
   }
+
+  public function bh ($target) {
+    $this->out("※「bake {$target}」のヘルプを表示します。");
+    $this->dispatchShell('bake', $target, '-h');
+  }
 }
